@@ -55,6 +55,7 @@
                 $("#imageOfTheDay").hide();
                 $("#videoOfTheDay").show();
                 
+                // set new video source
                 $("#videoOfTheDay").prop("src", "img/video-" + day + ".mp4");
             }
             else
@@ -62,7 +63,7 @@
                 $("#videoOfTheDay").hide();
                 $("#imageOfTheDay").show();
 
-                // set new source
+                // set new image source
                 $("#imageOfTheDay").prop("src", "img/pic-" + day + ".jpg");
                 
                 // stop video playback
