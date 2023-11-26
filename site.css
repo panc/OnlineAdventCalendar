@@ -175,12 +175,14 @@ body {
     }
 }
 
-.title .title-back {
+.title-back {
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
     transform: rotateY(180deg);
     color: #fff;
+    background-color: #ffffff;
+    
 }
 
 .grid-1 input {

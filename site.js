@@ -1,13 +1,11 @@
-﻿// https://webdesign.tutsplus.com/tutorials/how-to-build-a-festive-advent-calendar-with-css-grid--cms-30070
-
-$(document).ready(function() {
-
+﻿$(document).ready(function() 
+{
 	var grid = $("section.grid-1");
-    var date = (new Date()).getDate();
-    //date = 14; // debugging
+    var dayOfTheMonth = (new Date()).getDate();
+    //dayOfTheMonth = 14; // debugging
 
-	for(i = 1; i <= 24; i++){
-
+	for(i = 1; i <= 24; i++)
+    {
 		var day = $("<div></div>");
 		day.addClass("day-" + i);
 
@@ -16,7 +14,7 @@ $(document).ready(function() {
 		var front = $("<div class='front'></div>").text(i);
         var back = $("<div class='back'></div>").text(i);
 
-        if (i <= date)
+        if (i <= dayOfTheMonth)
             front.addClass("finished");
 
 		door.append(front, back);
@@ -24,11 +22,12 @@ $(document).ready(function() {
 		day.append(label);
         grid.append(day);
 
-        if (i > date)
+        if (i > dayOfTheMonth)
             label.attr("disabled", true);
 	}
 
-    $(".label").on("click", function () {
+    $(".label").on("click", function () 
+    {
 
         var isChecked = $(this).hasClass('checked');
         var isDisabled = $(this).attr('disabled');
@@ -36,9 +35,13 @@ $(document).ready(function() {
         if (isDisabled)
             return;
 
-        if (isChecked) {
+        if (isChecked) 
+        {
             $(".title").removeClass("showDetails");
             $(".label").removeClass("checked");
+
+            // stop video playback
+            $("#videoOfTheDay").prop("src", "");
         }
         else {
             $(".label").removeClass("checked");
@@ -46,7 +49,34 @@ $(document).ready(function() {
             $(".title").addClass("showDetails");
 
             var day = $(this).attr("day");
-            $("#imageOfTheDay").prop("src", "img/pic-" + day + ".jpg");
+
+            if (isVdieo(day))
+            {
+                $("#imageOfTheDay").hide();
+                $("#videoOfTheDay").show();
+                
+                $("#videoOfTheDay").prop("src", "img/video-" + day + ".mp4");
+            }
+            else
+            {
+                $("#videoOfTheDay").hide();
+                $("#imageOfTheDay").show();
+
+                // set new source
+                $("#imageOfTheDay").prop("src", "img/pic-" + day + ".jpg");
+                
+                // stop video playback
+                $("#videoOfTheDay").prop("src", "");
+            }
         }
     });
+
+    function isVdieo(day)
+    {
+        if (day == 5 || 
+            day == 7)
+            return true;
+        else
+            return false;
+    }
 }); 
