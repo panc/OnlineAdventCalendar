@@ -1,6 +1,6 @@
 body {
-    /*background: url(img/background.jpg) no-repeat top center;*/
-    background: url(img/snow-bg.svg) no-repeat top center #c7def2;
+    background: url(img/background-1.jpg) no-repeat top center #c7def2;
+    /*background: url(img/background-2.svg) no-repeat top center #c7def2;*/
     background-size: cover;
 }
   
@@ -232,7 +232,8 @@ body {
 }
 
 .door .front.finished {
-    color: #d60606;
+    color: #ec2323;
+    background-color: #ffffff7d;
 }
 
 .label:hover .door {
